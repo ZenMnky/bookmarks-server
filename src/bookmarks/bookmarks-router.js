@@ -1,17 +1,19 @@
-const express = requir('express');
+const express = require('express');
 const logger = require('../logger');
 const { v4: uuid } = require('uuid');
+const { bookmarks } = require('../store');
+const bookmarksRouter = express.Router();
 
-bookmarkRouter
+bookmarksRouter
     .route('/bookmarks')
     .get( (req, res) => {
-        // code here
+        res.json(bookmarks)
     })
     .post((req, res) => {
         // code here
     })
 
-bookmarkRouter 
+bookmarksRouter 
     .route('/bookmarks/:id')
     .get((req, res) => {
         // code here
