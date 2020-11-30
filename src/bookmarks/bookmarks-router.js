@@ -69,7 +69,22 @@ bookmarksRouter
 bookmarksRouter 
     .route('/bookmarks/:id')
     .get((req, res) => {
-        // code here
+        // destructure
+        const { id } = req.params;
+        
+        // find
+        const bookmark = bookmarks.find(bm => bm.id == id);
+
+        // validate
+        if(!bookmark){
+            logger.error(`Bookmark with id ${id} not found`)
+            return res
+                .status(404)
+                .send('404 Not Found')
+        }
+
+        // respond
+        return res.json(bookmark)
     })
     .delete((req, res) => {
         // code here
