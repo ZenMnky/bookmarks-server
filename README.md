@@ -3,6 +3,9 @@
 ## Description
 Express server for Bookmarks front-end Client
 
+## Use notes
+- Requires `API_TOKEN=<unique-token-here>`in .env.
+- Request headers must include `Authorization: Bearer <unique-token-here>`
 ## Scripts
 
 Start the application `npm start`
