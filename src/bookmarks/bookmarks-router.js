@@ -87,7 +87,29 @@ bookmarksRouter
         return res.json(bookmark)
     })
     .delete((req, res) => {
-        // code here
+        // destrcture
+        const { id } = req.params;
+
+        // find index
+        const bmIndex = bookmarks.findIndex(bm => bm.id == id)
+        
+        // validate
+        if(bmIndex === -1){
+            logger.error(`Bookmark with id ${id} not found`)
+            return res
+                .status(404)
+                .send('404 Not Found')
+        }
+        
+        // act
+        // remove bookmark from list
+        bookmarks.splice(bmIndex, 1);
+
+        // log & respond
+        logger.info(`Bookmark with id ${id} deleted`)
+        res
+            .status(204)
+            .end();
     })
 
 module.exports = bookmarksRouter;
